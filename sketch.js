@@ -1,51 +1,62 @@
-// fantasia, aventura, drama
+// Trap, Love Song
 
-// a viagem de chihiro, LIVRE, fantasia, aventura
-// paddington, LIVRE, fantasia, aventura
-// as aventuras de pi, 10, drama, fantasia, aventura
+// Dança do Pinguim - Aline Barros, LIVRE, Worship    a viagem de chihiro
+// Tu És - fhop Music, LIVRE, Worship    paddington
+// Limitado, Nesk Only, 10, Trap, Worship       as aventuras de pi
 
-// Ladrões de bicicleta, 12, drama.
-// depois da chuva, 10, drama
-// guardiões da galáxia, 12, fantasia, aventura
-// ladrões de bicicleta, 12, drama
-// o menino que descobriu o vento, 14, drama
+// Yebba's Heartbreak - Drake, Yebba, 12, Love Song.     ladroes de bicicleta 
+// Pela Manhã, Nesk Only         dps da chuva
+
 
   let campoIdade;
-  let campoFantasia;
+  let campoTrap;
+  let campoLoveSong;
 
 function setup() {
     createCanvas(800, 400);
+    createElement("h2", "Recomendador de Músicas");
+    createSpan("Sua Idade: ");
     campoIdade = createInput("5");
-    campoFantasia = createCheckbox("Gosta de fantasia?");
+    campoTrap = createCheckbox("Gosta de Trap?");
+    campoLoveSong = createCheckbox ("Gosta de Love Song?");
 }
 
 function draw() {
     background(220);
     let idade = campoIdade.value();
-    let gostaDeFantasia = campoFantasia.checked();
-    let recomendacao = geraRecomendacao(idade, gostaDeFantasia);
+    let gostaDeTrap = campoTrap.checked();
+    let gostaDeLoveSong = campoLoveSong.checked();
+    let recomendacao = geraRecomendacao(idade, gostaDeTrap, gostaDeLoveSong);
 
     textAlign(CENTER, CENTER);
     textSize(38);
     text(recomendacao, width / 2, height / 2);
 }
 
-function geraRecomendacao(idade, gostaDeFantasia) {
-    if(idade >= 10) {
-        if(idade >= 14) {
-            return "O menino que descobriu o vento";
+function geraRecomendacao(idade, gostaDeTrap, gostaDeLoveSong) {
+  if(idade >= 10) {
+    if(idade >= 25) {
+      return "Planos - BK";
+    } else {
+      if(idade >= 15) {
+        if(gostaDeTrap || gostaDeLoveSong) {
+          return "Poesia Acústica";
         } else {
-            if(gostaDeFantasia){
-                return "As aventuras de Pi";
+          return "Golden Hour - JVKE";
+        }
             } else {
-                return "Depois da chuva";
-            }
+            if(gostaDeTrap){
+                return "Limitado - Nesk Only";
+            } else {
+                return "Pela Manhã - Nesk Only";
+             }
+          }
         }
     } else {
-        if(gostaDeFantasia) {
-            return "A viagem de Chihiro";
+        if(gostaDeTrap) {
+            return "Imprevisto - Yago Oproprio";
         } else {
-            return "O feitiço do tempo";
+            return "her - JVKE";
         }
     }
 }
