@@ -1,6 +1,7 @@
 html, body {
-  margin: 0;
+  margin: 30px;
   padding: 0;
+  background-color: hsl(122,21%,54%);
 }
 canvas {
   display: block;
